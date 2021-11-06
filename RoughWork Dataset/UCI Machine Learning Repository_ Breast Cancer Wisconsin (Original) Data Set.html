@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<!-- saved from url=(0074)https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+(original) -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>UCI Machine Learning Repository: Breast Cancer Wisconsin (Original) Data Set</title>
+
+<!-- Stylesheet link -->
+<link rel="stylesheet" type="text/css" href="./UCI Machine Learning Repository_ Breast Cancer Wisconsin (Original) Data Set_files/ml.css">
+
+<script language="JavaScript" type="text/javascript">
+<!--
+function checkform ( form )
+{
+  // see http://www.thesitewizard.com/archive/validation.shtml
+  // for an explanation of this script and how to use it on your
+  // own website
+
+  // ** START **
+  if (form.q.value == "")
+  {
+    alert( "Please enter search terms." );
+    form.q.focus();
+    return false ;
+  }
+
+  if (getCheckedValue(form.sitesearch) == "ics.uci.edu" && form.q.value.indexOf("site:archive.ics.uci.edu/ml") == -1)
+  {
+    form.q.value = form.q.value + " site:archive.ics.uci.edu/ml";
+  }
+
+  // ** END **
+  return true ;
+}
+
+// return the value of the radio button that is checked
+// return an empty string if none are checked, or
+// there are no radio buttons
+function getCheckedValue(radioObj) {
+	if(!radioObj)
+		return "";
+	var radioLength = radioObj.length;
+	if(radioLength == undefined)
+		if(radioObj.checked)
+			return radioObj.value;
+		else
+			return "";
+	for(var i = 0; i < radioLength; i++) {
+		if(radioObj[i].checked) {
+			return radioObj[i].value;
+		}
+	}
+	return "";
+}
+//-->
+</script>
+
+<style type="text/css">[id^=root], [id^=docs], .cc_cursor, body, .ogdlpmhglpejoiomcodnpjnfgcpmgale_default, body, html, input[type="date"], input[type="time"], input[type="datetime-local"], input[type="month"], input::-webkit-contacts-auto-fill-button, input:read-only {cursor: url("data:image/png;base64,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") 0 0 , auto !important; }[role^=button], button, .cc_pointer, [type="search"]::-webkit-search-cancel-button, a, select, [type="search"]::-webkit-search-decoration, .paper-button, .ytp-progress-bar-container, input[type=submit], :link, :visited, a > *, img, button, ::-webkit-scrollbar-button, .ogdlpmhglpejoiomcodnpjnfgcpmgale_pointer, ::-webkit-file-upload-button, button, .ytp-volume-panel, #myogdlpmhglpejoiomcodnpjnfgcpmgale .icon { cursor: url("data:image/png;base64,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") 21 0, auto !important; } * {cursor: url("data:image/png;base64,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") 0 0 , auto }a, button, [type^=button], [role^=button]   { cursor: url("data:image/png;base64,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") 21 0, auto }</style></head>
+
+<body data-new-gr-c-s-check-loaded="14.1038.0" data-gr-ext-installed="">
+
+
+<!-- SITE HEADER (INCLUDES LOGO AND SEARCH BOX) -->
+
+<table width="100%" bgcolor="#003366">
+<tbody><tr>
+	<td>
+		<span class="normal"><a href="https://archive.ics.uci.edu/ml/index.html" alt="Home"><img src="./UCI Machine Learning Repository_ Breast Cancer Wisconsin (Original) Data Set_files/logo.gif" border="0"></a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://cml.ics.uci.edu/"><font color="FFDD33">Center for Machine Learning and Intelligent Systems</font></a></span>
+	</td>
+	<td width="100%" valign="top" align="right">
+		<span class="whitetext">
+		<a href="https://archive.ics.uci.edu/ml/about.html">About</a>&nbsp;
+		<a href="https://archive.ics.uci.edu/ml/citation_policy.html">Citation Policy</a>&nbsp;
+		<a href="https://archive.ics.uci.edu/ml/donation_policy.html">Donate a Data Set</a>&nbsp;
+		<a href="https://archive.ics.uci.edu/ml/contact.html">Contact</a>
+		</span>
+
+		<br>
+		<br>
+		<!-- Search Google -->
+
+		<form method="GET" action="https://www.google.com/custom" onsubmit="return checkform(this);">
+		<input type="text" name="q" size="30" maxlength="255" value="">
+		<input type="submit" name="sa" value="Search">
+		<input type="hidden" name="cof" value="AH:center;LH:130;L:http://archive.ics.uci.edu/assets/logo.gif;LW:384;AWFID:869c0b2eaa8d518e;">
+		<input type="hidden" name="domains" value="ics.uci.edu">
+		<br>
+		<input type="radio" name="sitesearch" value="ics.uci.edu" checked=""> <span class="whitetext"><font size="1">Repository</font></span>
+		<input type="radio" name="sitesearch" value=""> <span class="whitetext"><font size="1">Web</font></span>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="https://www.google.com/search"><img src="./UCI Machine Learning Repository_ Breast Cancer Wisconsin (Original) Data Set_files/Logo_25blk.gif" border="0" alt="Google" align="middle" height="27"></a>
+		<br>
+		</form>
+		<!-- Search Google -->
+
+
+		<span class="whitetext"><a href="https://archive.ics.uci.edu/ml/datasets.php"><font size="3" color="#FFDD33"><b>View
+ALL Data Sets</b></font></a></span>
+		<br>
+	</td>
+</tr>
+</tbody></table>
+
+
+<br>
+
+<div style="background-color:#6E4100; color:white; padding:20px; margin-bottom:8px">
+	  <span onclick="this.parentElement.style.display=&#39;none&#39;;" style="float:right; cursor:pointer; margin-left: 8px; font-size:x-large; line-height:16px"><strong>×</strong></span>
+	  Check out the <a target="_blank" href="https://archive-beta.ics.uci.edu/" style="color:white">beta version</a> of the new UCI Machine Learning Repository we are currently testing! <a target="_blank" href="https://archive-beta.ics.uci.edu/ml/contact" style="color:white">Contact us</a> if you have any issues, questions, or concerns. <a target="_blank" href="https://archive-beta.ics.uci.edu/" style="color:white">Click here to try out the new site</a>.
+</div>
+
+<table width="100%" border="0" cellpadding="2"><tbody><tr><td>
+
+   <table><tbody><tr>
+     <td valign="top">
+	<p>
+	<span class="heading"><b>Breast Cancer Wisconsin (Original) Data Set</b></span>
+	<br><span class="normal"><i><font size="4">Download</font></i>: <a href="https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/"><font style="BACKGROUND-COLOR: #FFFFAA" size="4">Data Folder</font></a>, <a href="https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/breast-cancer-wisconsin.names"><font style="BACKGROUND-COLOR: #FFFFAA" size="4">Data Set Description</font></a></span></p>
+
+	<p class="normal"><b>Abstract</b>: Original Wisconsin Breast Cancer Database</p>
+     </td>
+     <td><img src="./UCI Machine Learning Repository_ Breast Cancer Wisconsin (Original) Data Set_files/Large14.jpg" hspace="20" vspace="10"> </td>
+   </tr></tbody></table>
+
+<table border="1" cellpadding="6">
+	<tbody><tr>
+		<td bgcolor="#DDEEFF"><p class="normal"><b>Data Set Characteristics:&nbsp;&nbsp;</b></p></td>
+		<td><p class="normal">Multivariate</p></td>
+		<td bgcolor="#DDEEFF"><p class="normal"><b>Number of Instances:</b></p></td>
+		<td><p class="normal">699</p></td>
+		<td bgcolor="#DDEEFF"><p class="normal"><b>Area:</b></p></td>
+		<td><p class="normal">Life</p></td>
+	</tr>
+
+	<tr>
+		<td bgcolor="#DDEEFF"><p class="normal"><b>Attribute Characteristics:</b></p></td>
+		<td><p class="normal">Integer</p></td>
+		<td bgcolor="#DDEEFF"><p class="normal"><b>Number of Attributes:</b></p></td>
+		<td><p class="normal">10</p></td>
+		<td bgcolor="#DDEEFF"><p class="normal"><b>Date Donated</b></p></td>
+		<td><p class="normal">1992-07-15</p></td>
+	</tr>
+	<tr>
+		<td bgcolor="#DDEEFF"><p class="normal"><b>Associated Tasks:</b></p></td>
+		<td><p class="normal">Classification</p></td>
+		<td bgcolor="#DDEEFF"><p class="normal"><b>Missing Values?</b></p></td>
+		<td><p class="normal">Yes</p></td>
+		<td bgcolor="#DDEEFF"><p class="normal"><b>Number of Web Hits:</b></p></td>
+		<td><p class="normal">744238</p></td>
+	</tr>
+	<!--
+	<tr>
+
+		<td bgcolor="#DDEEFF"><p class="normal"><b>Highest Percentage Achieved:&nbsp;&nbsp;</b></p></td>
+		<td><p class="normal">96%</p></td>
+	</tr>
+	-->
+</tbody></table>
+
+
+<br>
+
+<p class="small-heading"><b>Source:</b></p>
+<p class="normal">Creator:
+<br>
+<br>Dr. WIlliam H. Wolberg (physician)
+<br>University of Wisconsin Hospitals
+<br>Madison, Wisconsin, USA
+<br> 
+<br>Donor: 
+<br>
+<br>Olvi Mangasarian (<u>mangasarian <b>'@'</b> cs.wisc.edu</u>)
+<br>Received by David W. Aha (<u>aha <b>'@'</b> cs.jhu.edu</u>)</p>
+
+<br>
+
+<p class="small-heading"><b>Data Set Information:</b></p>
+<p class="normal">Samples arrive periodically as Dr. Wolberg reports his clinical cases. The database therefore reflects this chronological grouping of the data. This grouping information appears immediately below, having been removed from the data itself:
+<br>
+<br>Group 1: 367 instances (January 1989)
+<br>Group 2:  70 instances (October 1989)
+<br>Group 3:  31 instances (February 1990)
+<br>Group 4:  17 instances (April 1990)
+<br>Group 5:  48 instances (August 1990)
+<br>Group 6:  49 instances (Updated January 1991)
+<br>Group 7:  31 instances (June 1991)
+<br>Group 8:  86 instances (November 1991)
+<br>-----------------------------------------
+<br>Total:   699 points (as of the donated datbase on 15 July 1992)
+<br>
+<br>Note that the results summarized above in Past Usage refer to a dataset of size 369, while Group 1 has only 367 instances.  This is because it originally contained 369 instances; 2 were removed.  The following statements summarizes changes to the original Group 1's set of data:
+<br>
+<br>#####  Group 1 : 367 points: 200B 167M (January 1989)
+<br>
+<br>#####  Revised Jan 10, 1991: Replaced zero bare nuclei in 1080185 &amp; 1187805
+<br>
+<br>#####  Revised Nov 22,1991: Removed 765878,4,5,9,7,10,10,10,3,8,1 no record
+<br>#####                  : Removed 484201,2,7,8,8,4,3,10,3,4,1 zero epithelial
+<br>#####                  : Changed 0 to 1 in field 6 of sample 1219406
+<br>#####                  : Changed 0 to 1 in field 8 of following sample:
+<br>#####                  : 1182404,2,3,1,1,1,2,0,1,1,1</p>
+
+<br>
+
+<p class="small-heading"><b>Attribute Information:</b></p>
+<p class="normal">1. Sample code number:            id number
+<br>2. Clump Thickness:               1 - 10
+<br>3. Uniformity of Cell Size:       1 - 10
+<br>4. Uniformity of Cell Shape:      1 - 10
+<br>5. Marginal Adhesion:             1 - 10
+<br>6. Single Epithelial Cell Size:   1 - 10
+<br>7. Bare Nuclei:                   1 - 10
+<br>8. Bland Chromatin:               1 - 10
+<br>9. Normal Nucleoli:               1 - 10
+<br>10. Mitoses:                       1 - 10
+<br>11. Class:                        (2 for benign, 4 for malignant)</p>
+
+<br>
+
+<p class="small-heading"><b>Relevant Papers:</b></p>
+<p class="normal">Wolberg, W.H., &amp; Mangasarian, O.L. (1990). Multisurface method of pattern separation for medical diagnosis applied to breast cytology. In Proceedings of the National Academy of Sciences, 87, 9193--9196.
+<br><a href="http://rexa.info/paper/781d2581b297dad058cf6f1be2a009144b5306fb">[Web Link]</a>
+<br>
+<br>Zhang, J. (1992). Selecting typical instances in instance-based learning.  In Proceedings of the Ninth International Machine Learning Conference (pp. 470--479).  Aberdeen, Scotland: Morgan Kaufmann.
+<br><a href="http://rexa.info/paper/8530b076d4e5d17b52264686e9d23ef329eb33ee">[Web Link]</a></p>
+
+<br>
+
+
+<!-- OLD CODE:
+
+<p class="small-heading"><b>Papers That Cite This Data Set<sup>1</sup>:</b></p>
+<img src="../assets/rexa.jpg" />
+<p class="normal">Gavin Brown. <a
+href="http://rexa.info/paper/dd4500e327a5f555d2f594711dc50b0f9faccd30">Diversity in Neural Network Ensembles</a>. The University of Birmingham. 2004.  [<a
+href="../support/breast+cancer+wisconsin+(original)#dd4500e327a5f555d2f594711dc50b0f9faccd30">View Context</a>].<br><br>Baback Moghaddam and Gregory Shakhnarovich. <a
+href="http://rexa.info/paper/4ce4c96181e2836dd80a71c2efebc7fb030c55d8">Boosted Dyadic Kernel Discriminants</a>. NIPS. 2002.  [<a
+href="../support/breast+cancer+wisconsin+(original)#4ce4c96181e2836dd80a71c2efebc7fb030c55d8">View Context</a>].<br><br>Krzysztof Grabczewski and Wl/odzisl/aw Duch. <a
+href="http://rexa.info/paper/b19579eae108f0efb0d9adf97e480280f8e4f7a8">Heterogeneous Forests of Decision Trees</a>. ICANN. 2002.  [<a
+href="../support/breast+cancer+wisconsin+(original)#b19579eae108f0efb0d9adf97e480280f8e4f7a8">View Context</a>].<br><br>András Antos and Balázs Kégl and Tamás Linder and Gábor Lugosi. <a
+href="http://rexa.info/paper/3ecc983417b61977b8f998e8a843948dad8fa21c">Data-dependent margin-based generalization bounds for classification</a>. Journal of Machine Learning Research, 3. 2002.  [<a
+href="../support/breast+cancer+wisconsin+(original)#3ecc983417b61977b8f998e8a843948dad8fa21c">View Context</a>].<br><br>Kristin P. Bennett and Ayhan Demiriz and Richard Maclin. <a
+href="http://rexa.info/paper/ca3e1e0bf335a97cedb76be7b64610181e0f6684">Exploiting unlabeled data in ensemble methods</a>. KDD. 2002.  [<a
+href="../support/breast+cancer+wisconsin+(original)#ca3e1e0bf335a97cedb76be7b64610181e0f6684">View Context</a>].<br><br>Hussein A. Abbass. <a
+href="http://rexa.info/paper/3a500f9d0b3bfdadc810cde1043178b2d127888e">An evolutionary artificial neural networks approach for breast cancer diagnosis</a>. Artificial Intelligence in Medicine, 25. 2002.  [<a
+href="../support/breast+cancer+wisconsin+(original)#3a500f9d0b3bfdadc810cde1043178b2d127888e">View Context</a>].<br><br>Nikunj C. Oza and Stuart J. Russell. <a
+href="http://rexa.info/paper/5193dfc0a9d39b5f86fe360d6beff81aa9b7390e">Experimental comparisons of online and batch versions of bagging and boosting</a>. KDD. 2001.  [<a
+href="../support/breast+cancer+wisconsin+(original)#5193dfc0a9d39b5f86fe360d6beff81aa9b7390e">View Context</a>].<br><br>Robert Burbidge and Matthew Trotter and Bernard F. Buxton and Sean B. Holden. <a
+href="http://rexa.info/paper/c185d513badef2336ca48f64098d4b5df17bf5a4">STAR - Sparsity through Automated Rejection</a>. IWANN (1). 2001.  [<a
+href="../support/breast+cancer+wisconsin+(original)#c185d513badef2336ca48f64098d4b5df17bf5a4">View Context</a>].<br><br>Lorne Mason and Peter L. Bartlett and Jonathan Baxter. <a
+href="http://rexa.info/paper/63e63c88edc486c3b1b2aeebb790f88a119536c9">Improved Generalization Through Explicit Optimization of Margins</a>. Machine Learning, 38. 2000.  [<a
+href="../support/breast+cancer+wisconsin+(original)#63e63c88edc486c3b1b2aeebb790f88a119536c9">View Context</a>].<br><br>P. S and Bradley K. P and Bennett A. Demiriz. <a
+href="http://rexa.info/paper/d254374dd5eab5d871c8010dcbe4ac84ec86ea8c">Constrained K-Means Clustering</a>. Microsoft Research Dept. of Mathematical Sciences One Microsoft Way Dept. of Decision Sciences and Eng. Sys. 2000.  [<a
+href="../support/breast+cancer+wisconsin+(original)#d254374dd5eab5d871c8010dcbe4ac84ec86ea8c">View Context</a>].<br><br>Endre Boros and Peter Hammer and Toshihide Ibaraki and Alexander Kogan and Eddy Mayoraz and Ilya B. Muchnik. <a
+href="http://rexa.info/paper/7265efd898e4c045ff078fcb63fec9fbde4b1249">An Implementation of Logical Analysis of Data</a>. IEEE Trans. Knowl. Data Eng, 12. 2000.  [<a
+href="../support/breast+cancer+wisconsin+(original)#7265efd898e4c045ff078fcb63fec9fbde4b1249">View Context</a>].<br><br>Yuh-Jeng Lee. <a
+href="http://rexa.info/paper/3c3eb7beca3f6ab6fcebe2863131fa3dbae6cb7f">Smooth Support Vector Machines</a>. Preliminary Thesis Proposal Computer Sciences Department University of Wisconsin. 2000.  [<a
+href="../support/breast+cancer+wisconsin+(original)#3c3eb7beca3f6ab6fcebe2863131fa3dbae6cb7f">View Context</a>].<br><br>Justin Bradley and Kristin P. Bennett and Bennett A. Demiriz. <a
+href="http://rexa.info/paper/93e4d326f6a322d66e034c1b88773f3a7f621526">Constrained K-Means Clustering</a>. Microsoft Research Dept. of Mathematical Sciences One Microsoft Way Dept. of Decision Sciences and Eng. Sys. 2000.  [<a
+href="../support/breast+cancer+wisconsin+(original)#93e4d326f6a322d66e034c1b88773f3a7f621526">View Context</a>].<br><br>Chun-Nan Hsu and Hilmar Schuschel and Ya-Ting Yang. <a
+href="http://rexa.info/paper/283e535d8f512eedabbd803c72a86b891eed8474">The ANNIGMA-Wrapper Approach to Neural Nets Feature Selection for Knowledge Discovery and Data Mining</a>. Institute of Information Science. 1999.  [<a
+href="../support/breast+cancer+wisconsin+(original)#283e535d8f512eedabbd803c72a86b891eed8474">View Context</a>].<br><br>W. Nick Street. <a
+href="http://rexa.info/paper/79b9012d7063a4c0e98d98ebd63d63044c8da997">A Neural Network Model for Prognostic Prediction</a>. ICML. 1998.  [<a
+href="../support/breast+cancer+wisconsin+(original)#79b9012d7063a4c0e98d98ebd63d63044c8da997">View Context</a>].<br><br>Yk Huhtala and Juha Kärkkäinen and Pasi Porkka and Hannu Toivonen. <a
+href="http://rexa.info/paper/ac8fe867e1d16d4d09f9bd759ba46699055c7ca6">Efficient Discovery of Functional and Approximate Dependencies Using Partitions</a>. ICDE. 1998.  [<a
+href="../support/breast+cancer+wisconsin+(original)#ac8fe867e1d16d4d09f9bd759ba46699055c7ca6">View Context</a>].<br><br>Huan Liu and Hiroshi Motoda and Manoranjan Dash. <a
+href="http://rexa.info/paper/73cfbd8185405d37df94492642c9ffdb3b48c37f">A Monotonic Measure for Optimal Feature Selection</a>. ECML. 1998.  [<a
+href="../support/breast+cancer+wisconsin+(original)#73cfbd8185405d37df94492642c9ffdb3b48c37f">View Context</a>].<br><br>Lorne Mason and Peter L. Bartlett and Jonathan Baxter. <a
+href="http://rexa.info/paper/271b9c67f2a11a31962a436a41aaa5ed148dda6e">Direct Optimization of Margins Improves Generalization in Combined Classifiers</a>. NIPS. 1998.  [<a
+href="../support/breast+cancer+wisconsin+(original)#271b9c67f2a11a31962a436a41aaa5ed148dda6e">View Context</a>].<br><br>Rudy Setiono and Huan Liu. <a
+href="http://rexa.info/paper/c2525357aa81ca73fb410a5013d47e3c6931342b">NeuroLinear: From neural networks to oblique decision rules</a>. Neurocomputing, 17. 1997.  [<a
+href="../support/breast+cancer+wisconsin+(original)#c2525357aa81ca73fb410a5013d47e3c6931342b">View Context</a>].<br><br>. <a
+href="http://rexa.info/paper/b0009a0081cc5fbfbae758def55cfd5b3256623b">Prototype Selection for Composite Nearest Neighbor Classifiers</a>. Department of Computer Science University of Massachusetts. 1997.  [<a
+href="../support/breast+cancer+wisconsin+(original)#b0009a0081cc5fbfbae758def55cfd5b3256623b">View Context</a>].<br><br>Kristin P. Bennett and Erin J. Bredensteiner. <a
+href="http://rexa.info/paper/63ebbe51c9c4dea76320f7b6a40f2a59f10cc7c0">A Parametric Optimization Method for Machine Learning</a>. INFORMS Journal on Computing, 9. 1997.  [<a
+href="../support/breast+cancer+wisconsin+(original)#63ebbe51c9c4dea76320f7b6a40f2a59f10cc7c0">View Context</a>].<br><br>Jennifer A. Blue and Kristin P. Bennett. <a
+href="http://rexa.info/paper/19e1b6e0932bbe665a2c4a069a0636d8d5cf0c6f">Hybrid Extreme Point Tabu Search</a>. Department of Mathematical Sciences Rensselaer Polytechnic Institute. 1996.  [<a
+href="../support/breast+cancer+wisconsin+(original)#19e1b6e0932bbe665a2c4a069a0636d8d5cf0c6f">View Context</a>].<br><br>Erin J. Bredensteiner and Kristin P. Bennett. <a
+href="http://rexa.info/paper/7d8a7f4c9a24d1127a5ded21969c82ed63037c42">Feature Minimization within Decision Trees</a>. National Science Foundation. 1996.  [<a
+href="../support/breast+cancer+wisconsin+(original)#7d8a7f4c9a24d1127a5ded21969c82ed63037c42">View Context</a>].<br><br>Ismail Taha and Joydeep Ghosh. <a
+href="http://rexa.info/paper/9f9df113476ffbf356892bb497bd2714e6f56d99">Characterization of the Wisconsin Breast cancer Database Using a Hybrid Symbolic-Connectionist System</a>. Proceedings of ANNIE. 1996.  [<a
+href="../support/breast+cancer+wisconsin+(original)#9f9df113476ffbf356892bb497bd2714e6f56d99">View Context</a>].<br><br>Geoffrey I. Webb. <a
+href="http://rexa.info/paper/81a75649d5acc1cc428ca756dac221bac3c8fe01">OPUS: An Efficient Admissible Algorithm for Unordered Search</a>. J. Artif. Intell. Res. (JAIR, 3. 1995.  [<a
+href="../support/breast+cancer+wisconsin+(original)#81a75649d5acc1cc428ca756dac221bac3c8fe01">View Context</a>].<br><br>Jarkko Salojarvi and Samuel Kaski and Janne Sinkkonen. <a
+href="http://rexa.info/paper/705b438dbe9ed18fe23005c774d2993019da030f">Discriminative clustering in Fisher metrics</a>. Neural Networks Research Centre Helsinki University of Technology.  [<a
+href="../support/breast+cancer+wisconsin+(original)#705b438dbe9ed18fe23005c774d2993019da030f">View Context</a>].<br><br>Wl odzisl and Rafal Adamczak and Krzysztof Grabczewski and Grzegorz Zal. <a
+href="http://rexa.info/paper/c3f9c3303aa080beec901b74703cef88ee2b2f24">A hybrid method for extraction of logical rules from data</a>. Department of Computer Methods, Nicholas Copernicus University.  [<a
+href="../support/breast+cancer+wisconsin+(original)#c3f9c3303aa080beec901b74703cef88ee2b2f24">View Context</a>].<br><br>Charles Campbell and Nello Cristianini. <a
+href="http://rexa.info/paper/b6e169d69cd67763b95698e8961696fec9ca93bf">Simple Learning Algorithms for Training Support Vector Machines</a>. Dept. of Engineering Mathematics.  [<a
+href="../support/breast+cancer+wisconsin+(original)#b6e169d69cd67763b95698e8961696fec9ca93bf">View Context</a>].<br><br>Chotirat Ann and Dimitrios Gunopulos. <a
+href="http://rexa.info/paper/4695569c53cd581fcc193415a8a94a1f92abf607">Scaling up the Naive Bayesian Classifier: Using Decision Trees for Feature Selection</a>. Computer Science Department University of California.  [<a
+href="../support/breast+cancer+wisconsin+(original)#4695569c53cd581fcc193415a8a94a1f92abf607">View Context</a>].<br><br>Wl odzisl/aw Duch and Rudy Setiono and Jacek M. Zurada. <a
+href="http://rexa.info/paper/8afa6796645ce4b0642db26c822cf6bfa8cc4d0d">Computational intelligence methods for rule-based data understanding</a>.  [<a
+href="../support/breast+cancer+wisconsin+(original)#8afa6796645ce4b0642db26c822cf6bfa8cc4d0d">View Context</a>].<br><br>Rafael S. Parpinelli and Heitor S. Lopes and Alex Alves Freitas. <a
+href="http://rexa.info/paper/899bdb470e48c308144216cc22048c88816ee035">An Ant Colony Based System for Data Mining: Applications to Medical Data</a>. CEFET-PR, CPGEI Av. Sete de Setembro, 3165.  [<a
+href="../support/breast+cancer+wisconsin+(original)#899bdb470e48c308144216cc22048c88816ee035">View Context</a>].<br><br>Wl/odzisl/aw Duch and Rafal/ Adamczak Email:duchraad@phys. uni. torun. pl. <a
+href="http://rexa.info/paper/53ac23f963b3607aae9580b356e6b236d2955314">Statistical methods for construction of neural networks</a>. Department of Computer Methods, Nicholas Copernicus University.  [<a
+href="../support/breast+cancer+wisconsin+(original)#53ac23f963b3607aae9580b356e6b236d2955314">View Context</a>].<br><br>Rafael S. Parpinelli and Heitor S. Lopes and Alex Alves Freitas. <a
+href="http://rexa.info/paper/f4405e32dbb5dea3ece303e2a5b3edb6b413271e">PART FOUR: ANT COLONY OPTIMIZATION AND IMMUNE SYSTEMS Chapter X An Ant Colony Algorithm for Classification Rule Discovery</a>. CEFET-PR, Curitiba.  [<a
+href="../support/breast+cancer+wisconsin+(original)#f4405e32dbb5dea3ece303e2a5b3edb6b413271e">View Context</a>].<br><br>Adam H. Cannon and Lenore J. Cowen and Carey E. Priebe. <a
+href="http://rexa.info/paper/095d7064837557bdfbca12fb9c12dbaaeb3a8b0d">Approximate Distance Classification</a>. Department of Mathematical Sciences The Johns Hopkins University.  [<a
+href="../support/breast+cancer+wisconsin+(original)#095d7064837557bdfbca12fb9c12dbaaeb3a8b0d">View Context</a>].<br><br>Andrew I. Schein and Lyle H. Ungar. <a
+href="http://rexa.info/paper/b0bf518f2c1c4ab72ebac0d17757aa8f52a6badf">A-Optimality for Active Learning of Logistic Regression Classifiers</a>. Department of Computer and Information Science Levine Hall.  [<a
+href="../support/breast+cancer+wisconsin+(original)#b0bf518f2c1c4ab72ebac0d17757aa8f52a6badf">View Context</a>].<br><br>Bart Baesens and Stijn Viaene and Tony Van Gestel and J. A. K Suykens and Guido Dedene and Bart De Moor and Jan Vanthienen and Katholieke Universiteit Leuven. <a
+href="http://rexa.info/paper/dba0c3d458498a4eef66d37b0f3b1cb310086d31">An Empirical Assessment of Kernel Type Performance for Least Squares Support Vector Machine Classifiers</a>. Dept. Applied Economic Sciences.  [<a
+href="../support/breast+cancer+wisconsin+(original)#dba0c3d458498a4eef66d37b0f3b1cb310086d31">View Context</a>].<br><br>Adil M. Bagirov and Alex Rubinov and A. N. Soukhojak and John Yearwood. <a
+href="http://rexa.info/paper/50b9babac023b426f1531a4265076bea534d121e">Unsupervised and supervised data classification via nonsmooth and global optimization</a>. School of Information Technology and Mathematical Sciences, The University of Ballarat.  [<a
+href="../support/breast+cancer+wisconsin+(original)#50b9babac023b426f1531a4265076bea534d121e">View Context</a>].<br><br>Rudy Setiono and Huan Liu. <a
+href="http://rexa.info/paper/9a75a9a8ce786d6a05ad51afa124cd4f70bfbb36">Neural-Network Feature Selector</a>. Department of Information Systems and Computer Science National University of Singapore.  [<a
+href="../support/breast+cancer+wisconsin+(original)#9a75a9a8ce786d6a05ad51afa124cd4f70bfbb36">View Context</a>].<br><br>Huan Liu. <a
+href="http://rexa.info/paper/8f5ae7219e74a85e3f722b58b3fedb30eab7a1d7">A Family of Efficient Rule Generators</a>. Department of Information Systems and Computer Science National University of Singapore.  [<a
+href="../support/breast+cancer+wisconsin+(original)#8f5ae7219e74a85e3f722b58b3fedb30eab7a1d7">View Context</a>].<br><br>Rudy Setiono. <a
+href="http://rexa.info/paper/42ba5137ab9d88dc1eae5caac18cb6a1818ae700">Extracting M-of-N Rules from Trained Neural Networks</a>. School of Computing National University of Singapore.  [<a
+href="../support/breast+cancer+wisconsin+(original)#42ba5137ab9d88dc1eae5caac18cb6a1818ae700">View Context</a>].<br><br></p>
+
+-->
+
+<p class="small-heading"><b>Papers That Cite This Data Set<sup>1</sup>:</b></p>
+<img src="./UCI Machine Learning Repository_ Breast Cancer Wisconsin (Original) Data Set_files/rexa.jpg"><p class="normal">Gavin Brown. <a href="http://rexa.info/paper/dd4500e327a5f555d2f594711dc50b0f9faccd30">Diversity in Neural Network Ensembles</a>. The University of Birmingham. 2004.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#dd4500e327a5f555d2f594711dc50b0f9faccd30">View Context</a>].<br><br>Baback Moghaddam and Gregory Shakhnarovich. <a href="http://rexa.info/paper/4ce4c96181e2836dd80a71c2efebc7fb030c55d8">Boosted Dyadic Kernel Discriminants</a>. NIPS. 2002.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#4ce4c96181e2836dd80a71c2efebc7fb030c55d8">View Context</a>].<br><br>Krzysztof Grabczewski and Wl/odzisl/aw Duch. <a href="http://rexa.info/paper/b19579eae108f0efb0d9adf97e480280f8e4f7a8">Heterogeneous Forests of Decision Trees</a>. ICANN. 2002.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#b19579eae108f0efb0d9adf97e480280f8e4f7a8">View Context</a>].<br><br>András Antos and Balázs Kégl and Tamás Linder and Gábor Lugosi. <a href="http://rexa.info/paper/3ecc983417b61977b8f998e8a843948dad8fa21c">Data-dependent margin-based generalization bounds for classification</a>. Journal of Machine Learning Research, 3. 2002.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#3ecc983417b61977b8f998e8a843948dad8fa21c">View Context</a>].<br><br>Kristin P. Bennett and Ayhan Demiriz and Richard Maclin. <a href="http://rexa.info/paper/ca3e1e0bf335a97cedb76be7b64610181e0f6684">Exploiting unlabeled data in ensemble methods</a>. KDD. 2002.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#ca3e1e0bf335a97cedb76be7b64610181e0f6684">View Context</a>].<br><br>Hussein A. Abbass. <a href="http://rexa.info/paper/3a500f9d0b3bfdadc810cde1043178b2d127888e">An evolutionary artificial neural networks approach for breast cancer diagnosis</a>. Artificial Intelligence in Medicine, 25. 2002.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#3a500f9d0b3bfdadc810cde1043178b2d127888e">View Context</a>].<br><br>Nikunj C. Oza and Stuart J. Russell. <a href="http://rexa.info/paper/5193dfc0a9d39b5f86fe360d6beff81aa9b7390e">Experimental comparisons of online and batch versions of bagging and boosting</a>. KDD. 2001.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#5193dfc0a9d39b5f86fe360d6beff81aa9b7390e">View Context</a>].<br><br>Robert Burbidge and Matthew Trotter and Bernard F. Buxton and Sean B. Holden. <a href="http://rexa.info/paper/c185d513badef2336ca48f64098d4b5df17bf5a4">STAR - Sparsity through Automated Rejection</a>. IWANN (1). 2001.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#c185d513badef2336ca48f64098d4b5df17bf5a4">View Context</a>].<br><br>Lorne Mason and Peter L. Bartlett and Jonathan Baxter. <a href="http://rexa.info/paper/63e63c88edc486c3b1b2aeebb790f88a119536c9">Improved Generalization Through Explicit Optimization of Margins</a>. Machine Learning, 38. 2000.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#63e63c88edc486c3b1b2aeebb790f88a119536c9">View Context</a>].<br><br>P. S and Bradley K. P and Bennett A. Demiriz. <a href="http://rexa.info/paper/d254374dd5eab5d871c8010dcbe4ac84ec86ea8c">Constrained K-Means Clustering</a>. Microsoft Research Dept. of Mathematical Sciences One Microsoft Way Dept. of Decision Sciences and Eng. Sys. 2000.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#d254374dd5eab5d871c8010dcbe4ac84ec86ea8c">View Context</a>].<br><br>Endre Boros and Peter Hammer and Toshihide Ibaraki and Alexander Kogan and Eddy Mayoraz and Ilya B. Muchnik. <a href="http://rexa.info/paper/7265efd898e4c045ff078fcb63fec9fbde4b1249">An Implementation of Logical Analysis of Data</a>. IEEE Trans. Knowl. Data Eng, 12. 2000.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#7265efd898e4c045ff078fcb63fec9fbde4b1249">View Context</a>].<br><br>Yuh-Jeng Lee. <a href="http://rexa.info/paper/3c3eb7beca3f6ab6fcebe2863131fa3dbae6cb7f">Smooth Support Vector Machines</a>. Preliminary Thesis Proposal Computer Sciences Department University of Wisconsin. 2000.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#3c3eb7beca3f6ab6fcebe2863131fa3dbae6cb7f">View Context</a>].<br><br>Justin Bradley and Kristin P. Bennett and Bennett A. Demiriz. <a href="http://rexa.info/paper/93e4d326f6a322d66e034c1b88773f3a7f621526">Constrained K-Means Clustering</a>. Microsoft Research Dept. of Mathematical Sciences One Microsoft Way Dept. of Decision Sciences and Eng. Sys. 2000.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#93e4d326f6a322d66e034c1b88773f3a7f621526">View Context</a>].<br><br>Chun-Nan Hsu and Hilmar Schuschel and Ya-Ting Yang. <a href="http://rexa.info/paper/283e535d8f512eedabbd803c72a86b891eed8474">The ANNIGMA-Wrapper Approach to Neural Nets Feature Selection for Knowledge Discovery and Data Mining</a>. Institute of Information Science. 1999.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#283e535d8f512eedabbd803c72a86b891eed8474">View Context</a>].<br><br>W. Nick Street. <a href="http://rexa.info/paper/79b9012d7063a4c0e98d98ebd63d63044c8da997">A Neural Network Model for Prognostic Prediction</a>. ICML. 1998.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#79b9012d7063a4c0e98d98ebd63d63044c8da997">View Context</a>].<br><br>Yk Huhtala and Juha Kärkkäinen and Pasi Porkka and Hannu Toivonen. <a href="http://rexa.info/paper/ac8fe867e1d16d4d09f9bd759ba46699055c7ca6">Efficient Discovery of Functional and Approximate Dependencies Using Partitions</a>. ICDE. 1998.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#ac8fe867e1d16d4d09f9bd759ba46699055c7ca6">View Context</a>].<br><br>Huan Liu and Hiroshi Motoda and Manoranjan Dash. <a href="http://rexa.info/paper/73cfbd8185405d37df94492642c9ffdb3b48c37f">A Monotonic Measure for Optimal Feature Selection</a>. ECML. 1998.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#73cfbd8185405d37df94492642c9ffdb3b48c37f">View Context</a>].<br><br>Lorne Mason and Peter L. Bartlett and Jonathan Baxter. <a href="http://rexa.info/paper/271b9c67f2a11a31962a436a41aaa5ed148dda6e">Direct Optimization of Margins Improves Generalization in Combined Classifiers</a>. NIPS. 1998.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#271b9c67f2a11a31962a436a41aaa5ed148dda6e">View Context</a>].<br><br>Rudy Setiono and Huan Liu. <a href="http://rexa.info/paper/c2525357aa81ca73fb410a5013d47e3c6931342b">NeuroLinear: From neural networks to oblique decision rules</a>. Neurocomputing, 17. 1997.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#c2525357aa81ca73fb410a5013d47e3c6931342b">View Context</a>].<br><br>. <a href="http://rexa.info/paper/b0009a0081cc5fbfbae758def55cfd5b3256623b">Prototype Selection for Composite Nearest Neighbor Classifiers</a>. Department of Computer Science University of Massachusetts. 1997.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#b0009a0081cc5fbfbae758def55cfd5b3256623b">View Context</a>].<br><br>Kristin P. Bennett and Erin J. Bredensteiner. <a href="http://rexa.info/paper/63ebbe51c9c4dea76320f7b6a40f2a59f10cc7c0">A Parametric Optimization Method for Machine Learning</a>. INFORMS Journal on Computing, 9. 1997.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#63ebbe51c9c4dea76320f7b6a40f2a59f10cc7c0">View Context</a>].<br><br>Jennifer A. Blue and Kristin P. Bennett. <a href="http://rexa.info/paper/19e1b6e0932bbe665a2c4a069a0636d8d5cf0c6f">Hybrid Extreme Point Tabu Search</a>. Department of Mathematical Sciences Rensselaer Polytechnic Institute. 1996.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#19e1b6e0932bbe665a2c4a069a0636d8d5cf0c6f">View Context</a>].<br><br>Erin J. Bredensteiner and Kristin P. Bennett. <a href="http://rexa.info/paper/7d8a7f4c9a24d1127a5ded21969c82ed63037c42">Feature Minimization within Decision Trees</a>. National Science Foundation. 1996.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#7d8a7f4c9a24d1127a5ded21969c82ed63037c42">View Context</a>].<br><br>Ismail Taha and Joydeep Ghosh. <a href="http://rexa.info/paper/9f9df113476ffbf356892bb497bd2714e6f56d99">Characterization of the Wisconsin Breast cancer Database Using a Hybrid Symbolic-Connectionist System</a>. Proceedings of ANNIE. 1996.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#9f9df113476ffbf356892bb497bd2714e6f56d99">View Context</a>].<br><br>Geoffrey I. Webb. <a href="http://rexa.info/paper/81a75649d5acc1cc428ca756dac221bac3c8fe01">OPUS: An Efficient Admissible Algorithm for Unordered Search</a>. J. Artif. Intell. Res. (JAIR, 3. 1995.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#81a75649d5acc1cc428ca756dac221bac3c8fe01">View Context</a>].<br><br>Jarkko Salojarvi and Samuel Kaski and Janne Sinkkonen. <a href="http://rexa.info/paper/705b438dbe9ed18fe23005c774d2993019da030f">Discriminative clustering in Fisher metrics</a>. Neural Networks Research Centre Helsinki University of Technology.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#705b438dbe9ed18fe23005c774d2993019da030f">View Context</a>].<br><br>Wl odzisl and Rafal Adamczak and Krzysztof Grabczewski and Grzegorz Zal. <a href="http://rexa.info/paper/c3f9c3303aa080beec901b74703cef88ee2b2f24">A hybrid method for extraction of logical rules from data</a>. Department of Computer Methods, Nicholas Copernicus University.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#c3f9c3303aa080beec901b74703cef88ee2b2f24">View Context</a>].<br><br>Charles Campbell and Nello Cristianini. <a href="http://rexa.info/paper/b6e169d69cd67763b95698e8961696fec9ca93bf">Simple Learning Algorithms for Training Support Vector Machines</a>. Dept. of Engineering Mathematics.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#b6e169d69cd67763b95698e8961696fec9ca93bf">View Context</a>].<br><br>Chotirat Ann and Dimitrios Gunopulos. <a href="http://rexa.info/paper/4695569c53cd581fcc193415a8a94a1f92abf607">Scaling up the Naive Bayesian Classifier: Using Decision Trees for Feature Selection</a>. Computer Science Department University of California.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#4695569c53cd581fcc193415a8a94a1f92abf607">View Context</a>].<br><br>Wl odzisl/aw Duch and Rudy Setiono and Jacek M. Zurada. <a href="http://rexa.info/paper/8afa6796645ce4b0642db26c822cf6bfa8cc4d0d">Computational intelligence methods for rule-based data understanding</a>.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#8afa6796645ce4b0642db26c822cf6bfa8cc4d0d">View Context</a>].<br><br>Rafael S. Parpinelli and Heitor S. Lopes and Alex Alves Freitas. <a href="http://rexa.info/paper/899bdb470e48c308144216cc22048c88816ee035">An Ant Colony Based System for Data Mining: Applications to Medical Data</a>. CEFET-PR, CPGEI Av. Sete de Setembro, 3165.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#899bdb470e48c308144216cc22048c88816ee035">View Context</a>].<br><br>Wl/odzisl/aw Duch and Rafal/ Adamczak Email:duchraad@phys. uni. torun. pl. <a href="http://rexa.info/paper/53ac23f963b3607aae9580b356e6b236d2955314">Statistical methods for construction of neural networks</a>. Department of Computer Methods, Nicholas Copernicus University.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#53ac23f963b3607aae9580b356e6b236d2955314">View Context</a>].<br><br>Rafael S. Parpinelli and Heitor S. Lopes and Alex Alves Freitas. <a href="http://rexa.info/paper/f4405e32dbb5dea3ece303e2a5b3edb6b413271e">PART FOUR: ANT COLONY OPTIMIZATION AND IMMUNE SYSTEMS Chapter X An Ant Colony Algorithm for Classification Rule Discovery</a>. CEFET-PR, Curitiba.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#f4405e32dbb5dea3ece303e2a5b3edb6b413271e">View Context</a>].<br><br>Adam H. Cannon and Lenore J. Cowen and Carey E. Priebe. <a href="http://rexa.info/paper/095d7064837557bdfbca12fb9c12dbaaeb3a8b0d">Approximate Distance Classification</a>. Department of Mathematical Sciences The Johns Hopkins University.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#095d7064837557bdfbca12fb9c12dbaaeb3a8b0d">View Context</a>].<br><br>Andrew I. Schein and Lyle H. Ungar. <a href="http://rexa.info/paper/b0bf518f2c1c4ab72ebac0d17757aa8f52a6badf">A-Optimality for Active Learning of Logistic Regression Classifiers</a>. Department of Computer and Information Science Levine Hall.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#b0bf518f2c1c4ab72ebac0d17757aa8f52a6badf">View Context</a>].<br><br>Bart Baesens and Stijn Viaene and Tony Van Gestel and J. A. K Suykens and Guido Dedene and Bart De Moor and Jan Vanthienen and Katholieke Universiteit Leuven. <a href="http://rexa.info/paper/dba0c3d458498a4eef66d37b0f3b1cb310086d31">An Empirical Assessment of Kernel Type Performance for Least Squares Support Vector Machine Classifiers</a>. Dept. Applied Economic Sciences.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#dba0c3d458498a4eef66d37b0f3b1cb310086d31">View Context</a>].<br><br>Adil M. Bagirov and Alex Rubinov and A. N. Soukhojak and John Yearwood. <a href="http://rexa.info/paper/50b9babac023b426f1531a4265076bea534d121e">Unsupervised and supervised data classification via nonsmooth and global optimization</a>. School of Information Technology and Mathematical Sciences, The University of Ballarat.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#50b9babac023b426f1531a4265076bea534d121e">View Context</a>].<br><br>Rudy Setiono and Huan Liu. <a href="http://rexa.info/paper/9a75a9a8ce786d6a05ad51afa124cd4f70bfbb36">Neural-Network Feature Selector</a>. Department of Information Systems and Computer Science National University of Singapore.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#9a75a9a8ce786d6a05ad51afa124cd4f70bfbb36">View Context</a>].<br><br>Huan Liu. <a href="http://rexa.info/paper/8f5ae7219e74a85e3f722b58b3fedb30eab7a1d7">A Family of Efficient Rule Generators</a>. Department of Information Systems and Computer Science National University of Singapore.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#8f5ae7219e74a85e3f722b58b3fedb30eab7a1d7">View Context</a>].<br><br>Rudy Setiono. <a href="http://rexa.info/paper/42ba5137ab9d88dc1eae5caac18cb6a1818ae700">Extracting M-of-N Rules from Trained Neural Networks</a>. School of Computing National University of Singapore.  [<a href="https://archive.ics.uci.edu/ml/support/breast+cancer+wisconsin+(original)#42ba5137ab9d88dc1eae5caac18cb6a1818ae700">View Context</a>].<br><br></p>
+
+<br>
+
+<p class="small-heading"><b>Citation Request:</b></p>
+<p class="normal">This breast cancer databases was obtained from the University of Wisconsin Hospitals, Madison from Dr. William H. Wolberg.  If you publish results when using this database, then please include this information in your acknowledgements.  Also, please cite one or more of:
+<br>1. O. L. Mangasarian and W. H. Wolberg: "Cancer diagnosis via linear programming", SIAM News, Volume 23, Number 5, September 1990, pp 1 &amp; 18.
+<br>2. William H. Wolberg and O.L. Mangasarian: "Multisurface method of pattern separation for medical diagnosis applied to breast cytology", Proceedings of the National Academy of Sciences, U.S.A., Volume 87, December 1990, pp 9193-9196.
+<br>3. O. L. Mangasarian, R. Setiono, and W.H. Wolberg: "Pattern recognition via linear programming: Theory and application to medical diagnosis", in: "Large-scale numerical optimization", Thomas F. Coleman and Yuying Li, editors, SIAM Publications, Philadelphia 1990, pp 22-30.
+<br>4. K. P. Bennett &amp; O. L. Mangasarian: "Robust linear programming discrimination of two linearly inseparable sets", Optimization Methods and Software 1, 1992, 23-34 (Gordon &amp; Breach Science Publishers).</p>
+
+</td></tr></tbody></table>
+
+
+<hr>
+
+<!-- OLD CODE:
+<p class="normal"><font size=1>[1] Papers were automatically harvested and associated with this data set, in collaboration with <a href="http://rexa.info"><font size=1>Rexa.info</font></a></font></p>
+-->
+
+<p class="normal"><font size="1">[1] Papers were automatically harvested and associated with this data set, in collaboration
+with <a href="http://rexa.info/"><font size="1">Rexa.info</font></a></font></p>
+
+<table cellpadding="5" align="center"><tbody><tr valign="center">
+		<td><p class="normal">Supported By:</p></td>
+        <td><img src="./UCI Machine Learning Repository_ Breast Cancer Wisconsin (Original) Data Set_files/nsfe.gif" height="60"> </td>
+        <td><p class="normal">&nbsp;In Collaboration With:</p></td>
+        <td><img src="./UCI Machine Learning Repository_ Breast Cancer Wisconsin (Original) Data Set_files/rexaSmall.jpg"></td>
+</tr></tbody></table>
+
+<center>
+<span class="normal">
+<a href="https://archive.ics.uci.edu/ml/about.html">About</a>&nbsp;&nbsp;||&nbsp;
+<a href="https://archive.ics.uci.edu/ml/citation_policy.html">Citation Policy</a>&nbsp;&nbsp;||&nbsp;
+<a href="https://archive.ics.uci.edu/ml/donation_policy.html">Donation Policy</a>&nbsp;&nbsp;||&nbsp;
+<a href="https://archive.ics.uci.edu/ml/contact.html">Contact</a>&nbsp;&nbsp;||&nbsp;
+<a href="http://cml.ics.uci.edu/">CML</a>
+</span>
+</center>
+
+
+
+
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
