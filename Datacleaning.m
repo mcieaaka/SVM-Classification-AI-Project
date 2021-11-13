@@ -1,15 +1,19 @@
 data = readtable("breast-cancer-wisconsin.csv");
+data = unique(data,"rows");
+
+
+len = length(data.class);
+for i = 1:len
+   if(data.class(i)==2)
+       data.class(i)=0;
+   else
+       data.class(i)=1;
+   end
+end 
+
 data = table2cell(data);
-%len = length(data.class);
-%for i = 1:len
-%    if(data.class(i)==2)
-%        data.class(i)=0;
-%    else
-%        data.class(i)=1;
-%    end
-%end 
-training_data = data(1:559,:);
-testing_data = data(560:699,:);
+training_data = data(1:414,:);
+testing_data = data(415:691,:);
 
 Xtrain = cell2mat(training_data(:,2:10));
 
@@ -34,5 +38,6 @@ for i = 1:size(Xtest,1)
         end
     end
 end
-Ytrain(isnan(Ytrain)) = 2;
-Ytest(isnan(Ytest))=2;
+
+Ytrain(isnan(Ytrain)) = 0;
+Ytest(isnan(Ytest))=0;
